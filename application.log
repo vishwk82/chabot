@@ -60,3 +60,65 @@ s2025-03-25 12:03:05,199 - INFO - Loading markdown documents from ./data...
 2025-03-25 12:03:09,227 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
 2025-03-25 12:03:11,274 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
 2025-03-25 12:03:13,335 - INFO - Vector store persisted successfully!
+2025-03-25 12:32:50,500 - INFO - Loading markdown documents from ./data...
+2025-03-25 12:32:52,067 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:53,657 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:53,679 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:53,693 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:53,704 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:53,741 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:53,749 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:53,790 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:53,809 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:53,815 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:53,823 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:53,825 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:53,834 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:53,838 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:53,843 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:53,855 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:53,867 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:53,898 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:53,915 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:53,943 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:53,944 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:53,957 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:53,981 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:53,985 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,002 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,015 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,023 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,032 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,038 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,049 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,056 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,064 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,073 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,079 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,085 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,109 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,115 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,130 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,143 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,154 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,183 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,193 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,219 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,239 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,249 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,272 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,283 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,315 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,318 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,320 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,323 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,326 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,328 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,331 - WARNING - libmagic is unavailable but assists in filetype detection. Please consider installing libmagic for better results.
+2025-03-25 12:32:54,334 - INFO - Loaded 54 documents
+2025-03-25 12:32:54,337 - INFO - Split into 247 chunks
+2025-03-25 12:32:54,338 - INFO - Creating embeddings using model: text-embedding-ada-002
+2025-03-25 12:32:54,630 - INFO - Building Chroma vector store at ./embeddings_store
+2025-03-25 12:32:54,911 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-03-25 12:32:56,664 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-25 12:32:58,761 - INFO - Vector store persisted successfully!

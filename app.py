@@ -4,8 +4,9 @@ import logging
 
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+from pydantic import PrivateAttr
 
-# Updated imports to match the latest library structure
+
 from langchain_community.embeddings import OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
 from langchain_openai import ChatOpenAI
@@ -17,6 +18,10 @@ from langchain.memory import ConversationBufferMemory
 from langchain.retrievers import ContextualCompressionRetriever
 from langchain.retrievers.document_compressors import CrossEncoderReranker
 from langchain_community.cross_encoders import HuggingFaceCrossEncoder
+
+from langchain.schema.retriever import BaseRetriever  # ✅ Correct import path
+from langchain.schema import Document
+from typing import List
 
 from config import EMBEDDING_CONFIG, LLM_CONFIG, VECTOR_STORE_PATH
 
@@ -32,11 +37,43 @@ class QueryRequest(BaseModel):
 qa_chain = None
 vectorstore = None
 
+# ✅ Custom FullDocRetriever
+class FullDocRetriever(BaseRetriever):
+    _retriever: any = PrivateAttr()
+
+    def __init__(self, wrapped_retriever):
+        super().__init__()
+        self._retriever = wrapped_retriever  # ✅ Use PrivateAttr
+
+    def get_relevant_documents(self, query: str) -> List[Document]:
+        docs = self._retriever.get_relevant_documents(query)
+        seen = set()
+        deduped = []
+        for doc in docs:
+            full_text = doc.metadata.get("full_doc", doc.page_content)
+            if full_text not in seen:
+                seen.add(full_text)
+                doc.page_content = full_text  # Replace chunk with full doc
+                deduped.append(doc)
+        return deduped
+
+    async def aget_relevant_documents(self, query: str) -> List[Document]:
+        docs = await self._retriever.aget_relevant_documents(query)
+        seen = set()
+        deduped = []
+        for doc in docs:
+            full_text = doc.metadata.get("full_doc", doc.page_content)
+            if full_text not in seen:
+                seen.add(full_text)
+                doc.page_content = full_text
+                deduped.append(doc)
+        return deduped
+
 
 @app.on_event("startup")
 def startup_event():
     """
-    Initialize the vector store, reranker, and QA chain at application startup.
+    Initialize vector store, reranker, and QA chain.
     """
     global qa_chain, vectorstore
 
@@ -48,39 +85,34 @@ def startup_event():
 
     openai.api_key = openai_api_key
 
-    # Initialize the embedding model
     embedding_model = OpenAIEmbeddings(
         api_key=openai_api_key,
         model=EMBEDDING_CONFIG["model"]
     )
 
-    # Load the Chroma store with the embedding function
     vectorstore = Chroma(
         embedding_function=embedding_model,
         persist_directory=VECTOR_STORE_PATH
     )
 
-    # Create the base retriever
     base_retriever = vectorstore.as_retriever(search_kwargs={"k": 10})
 
-    # Set up the reranker using a Hugging Face cross-encoder model
     cross_encoder = HuggingFaceCrossEncoder(model_name="cross-encoder/ms-marco-MiniLM-L-6-v2")
     reranker = CrossEncoderReranker(model=cross_encoder, top_n=5)
 
-    # Wrap retriever with contextual compression and reranker
     retriever = ContextualCompressionRetriever(
         base_compressor=reranker,
         base_retriever=base_retriever
     )
 
-    # Initialize the LLM
+    full_doc_retriever = FullDocRetriever(retriever)
+
     llm = ChatOpenAI(
         temperature=LLM_CONFIG["temperature"],
         api_key=LLM_CONFIG["openai_api_key"],
         model_name=LLM_CONFIG["model_name"]
     )
 
-    # Custom prompt for chain
     STUFF_PROMPT = PromptTemplate(
         template="""
 You are an Ubuntu Q&A Chatbot. You will be given a user question and some context. If you find the answer in the context provide the answer from the context.
@@ -93,24 +125,22 @@ Answer:
         input_variables=["context", "question"],
     )
 
-    # Setup memory
     memory = ConversationBufferMemory(
         memory_key="chat_history",
         return_messages=True,
         output_key="answer"
     )
 
-    # Build ConversationalRetrievalChain
     qa_chain = ConversationalRetrievalChain.from_llm(
         llm=llm,
-        retriever=retriever,
+        retriever=full_doc_retriever,
         memory=memory,
         combine_docs_chain_kwargs={"prompt": STUFF_PROMPT},
         return_source_documents=True,
         output_key="answer"
     )
 
-    logger.info("QA chain with reranker and memory initialized successfully.")
+    logger.info("QA chain initialized successfully.")
 
 
 @app.post("/chat")
@@ -133,15 +163,13 @@ def chat_endpoint(query_request: QueryRequest):
         )
 
     try:
-        # Memory-based chat with contextual retrieval
         result = qa_chain({"question": query_request.question})
         answer = result["answer"]
         source_documents = result.get("source_documents", [])
 
         sources = [
             {
-                "source": doc.metadata.get("source", "information not found in the data source"),
-                "content": doc.page_content
+                "source": doc.metadata.get("source", "source unknown"),
             }
             for doc in source_documents
         ]
