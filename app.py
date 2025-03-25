@@ -84,8 +84,6 @@ def startup_event():
     STUFF_PROMPT = PromptTemplate(
         template="""
 You are an Ubuntu Q&A Chatbot. You will be given a user question and some context. If you find the answer in the context provide the answer from the context.
-Only if you are very sure that the question is not relevant to Ubuntu, you should
-respond exactly with: "The answer is not there in the database". 
 Context:
 {context}
 
