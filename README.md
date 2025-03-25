@@ -13,7 +13,6 @@ A FastAPI-based Q&A chatbot that uses OpenAI embeddings, Chroma vector store, an
 ├── config.py                 # Configuration for embeddings, LLM, paths, etc.
 ├── logger_config.py          # Logging setup
 ├── requirements.txt
-├── Dockerfile
 ├── data/                     # Folder containing markdown files (*.md)
 └── embeddings_store/         # Folder where vector store is persisted
 ```
@@ -28,7 +27,7 @@ A FastAPI-based Q&A chatbot that uses OpenAI embeddings, Chroma vector store, an
 - Implements **contextual compression retriever with reranker**.
 - Supports **conversational memory** with LangChain.
 - Provides a Swagger UI at `/docs` for interactive API testing.
-- Containerized with Docker.
+
 
 ---
 
